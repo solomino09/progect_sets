@@ -1,0 +1,27 @@
+{% extends "accounts/base_auth.html" %}
+{% load i18n core_tags static %}
+
+{% block title %}{% trans "Sign Up" %}{% endblock %}
+{% block extra_meta %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Sign Up</h1>
+
+<form method="post">
+    <input type="hidden" name="next" value="{{ next }}" />
+    {% csrf_token %}
+    {% include "forms/form_fields.html" with hide_required_badges=True %}
+    <div class="form-group">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">{% trans "Sign Up" %}</button>
+    </div>
+</form>
+
+<div class="row mt-4">
+ <div class="col-md-12 mx-auto social-container my-2 order-md-1">
+    <button class="btn btn-lg btn-primary btn-block">
+        <a style="color: white; text-decoration: none;" href="{% url 'social:begin' 'linkedin-oauth2' %}">Sing up With Linkedin</a>
+    </button>
+ </div>
+</div>
+
+{% endblock %}

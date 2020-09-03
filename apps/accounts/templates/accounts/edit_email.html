@@ -1,0 +1,33 @@
+{% extends "accounts/base_profile.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Edit email" %}{% endblock %}
+
+{% block profile_content %}
+<h1 class="mb-4">{% trans "Edit email" %}</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="next" value="{{ next }}" />
+    {% csrf_token %}
+    {% include "forms/form_fields.html" %}
+    <div class="form-group">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#chenge_emailModal" type="submit">{% trans "Update" %}</button>
+    </div>
+</form>
+
+<!-- Small modal -->
+<div class="modal" id="chenge_emailModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+      <div class="modal-body">
+        <div class="modal-body"><i class="fa fa-question-circle"></i> Please confirm your email address changes, check your mail box</div>
+        <div class="modal-footer"><a class="btn btn-warning btn-block" href="/">OK</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

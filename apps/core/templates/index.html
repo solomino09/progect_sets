@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block title %}MySet{% endblock %}
+
+{% block extra_css %}
+    <style type="text/css">
+        .main-text-center {
+            /*color: #FFFFFF;*/
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 0;
+            line-height: 38px;
+            text-align: center;
+        }
+        .for-customers-vendors {
+            /*color: #FFFFFF;*/
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 24px;
+            text-align: center;
+        }
+        .color-blue {
+            color: #579CE9;
+        }
+        .btn-blue {
+            background-color: #579CE9;
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 10px 10%;
+            border-radius: 0px;
+        }
+        .subscribe-footer {
+            position: absolute;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+        
+        
+
+        <div class="row justify-content-center">
+            <div class="col-md-9" style="margin-top: 5rem;">
+                <p class="main-text-center"><span class="color-blue">MySet</span> is the bridge between
+                    Customer,<br> who is looking for a reliable partner for their project
+                    and<br> reputable Vendor, who provides the best Services.
+                </p>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 3rem;">
+            <div class="col-md-6">
+                <div class="col-md-10 for-customers-vendors">
+                    <p class=""><span class="color-blue">For Customers:</span> All-in-one platform that
+                        allows
+                        you to get maximum information about
+                        potential Vendors and helps to make the right choice.
+                    </p>
+                    <div class="row justify-content-center my-2">
+                        <span>Decide wisely. Analyze maximum information.</span>
+                    </div>
+                    <div class="text-center my-4">
+                        <a href="{% url 'register' %}">
+                            <button type="button" class="btn btn-blue">Find your set</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-11 for-customers-vendors">
+                    <p><span class="color-blue">For Vendors:</span> Universal platform to promote your
+                        company,
+                        easy tool to manage and share
+                        your portfolio.
+                    </p>
+                    <div class="row justify-content-center my-2">
+                        <span>Promote your services. Keep the portfolio up-to-date.</span>
+                    </div>
+                    <div class="text-center my-4">
+                        <a href="{% url 'register' %}">
+                            <button type="button" class="btn btn-blue">Get listed</button>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    
+
+    <div class="subscribe-footer">
+        <div class="col-md-8 offset-md-2 col-sm-10 offset-sm-1">
+            <form method="POST" class="container w-100">
+                <input type="hidden" name="csrfmiddlewaretoken" value="EgjQ8dg7uaB24274i1pdEP9qjbtRyHj8RnBr0l99bPwn9gh2XNFtgdcNfahvMaXG">
+                <label for="id_notification_subscription_email" class="subscribe-text d-flex justify-content-center text-center">
+                    We are in beta. Want to stay updated about the launch? Subscribe!
+                </label>
+                <div class="row">
+                    <div class="col-lg-8 col-md-7 col-sm-12 mb-2">
+                        <input name="email" type="email" class="email subscribe-input mr-3" id="id_notification_subscription_email" aria-describedby="emailHelp" placeholder="Type your email here">
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-12 mb-2">
+                        <button type="button" class="subscribe-button w-100" onclick="subscribe()">Subscribe</button>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 d-flex flex-column justify-content-center w-100 mb-2">
+                        <span class="text-center">MySet © 2020</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+{% endblock %}

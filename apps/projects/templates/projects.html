@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% block title %}MySet{% endblock %}
+
+{% block extra_css %}
+<style type="text/css">
+    .table td{
+        border-top: none;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="list-group">
+            <div class="card">
+                <article class="card-group-item">
+
+                    <div class="filter-content">
+                        <div class="content card-body" style="padding-bottom: 0;">
+                            <div class='row'>
+                                <div class="form-group mb-2 col-7">
+                                    <input type="text" class="form-control" id="input" placeholder="">
+                                </div>
+                                <div class="form-group mb-2 col-5">
+                                    <button type="reset" class="btn btn-primary">Reset</button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <form method="get">
+                            <div class="card-body" style=" max-height: 300px; overflow: auto;">
+                                <header class="card-header">
+                                    <h5 class="title">Industries</h5>
+                                </header>
+
+                                {% for industry in user_industries %}
+                                    <label class="form-check">
+                                      <div class="media align-items-center mt-2">
+                                        <div>
+                                            <input class="form-check-input" type="checkbox"
+                                             name="f-industry"
+                                             value="{{ industry.0.pk }}">
+                                              <span class="form-check-label">
+                                                  {{ industry.0.title }}
+                                              </span>
+                                        </div>
+                                        <div class="media-body d-flex justify-content-end text-muted font-size-1 ml-2">
+                                            <small class="mb-2"><strong>{{ industry.1 }}</strong></small>
+                                        </div>
+                                    </div>
+                                    </label>
+                                {% endfor %}
+                            </div>
+                            <div class="card-body" style=" max-height: 300px; overflow: auto;">
+                                <header class="card-header">
+                                    <h5 class="title">Technologies</h5>
+                                </header>
+                                {% for technology in user_technologies %}
+                                    <label class="form-check">
+                                      <div class="media align-items-center mt-2">
+                                        <div>
+                                            <input class="form-check-input" type="checkbox"
+                                             name="f-technology"
+                                             value="{{ technology.0.pk }}">
+                                              <span class="form-check-label">
+                                                  {{ technology.0.title }}
+                                              </span>
+                                        </div>
+                                        <div class="media-body d-flex justify-content-end text-muted font-size-1 ml-2">
+                                            <small class="mb-2"><strong>{{ technology.1 }}</strong></small>
+                                        </div>
+                                    </div>
+                                    </label>
+                                {% endfor %}
+                            </div>
+                            <input class="btn btn-primary" type="submit" value="Search">
+                        </form>
+
+                    </div>
+                </article> 
+            </div>
+        </div>
+    </div>
+
+      <div class="col-lg-9">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-secondary active">
+            <input type="radio" name="options" id="option1" checked> Private
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option2"> Public
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option3"> My sets
+          </label>
+        </div>
+
+        <div class="media align-items-center mt-2">
+            <div>
+                <button type="button" class="btn btn-outline-primary">Add new project</button>
+            </div>
+            <div class="media-body d-flex justify-content-end text-muted font-size-1 ml-2">
+                <button type="button" class="btn btn-outline-primary">Upload.csv</button>
+                <button type="button" class="btn btn-outline-primary">Addd new set</button>
+                <button type="button" class="btn btn-outline-danger">Delete all</button>
+            </div>
+        </div>
+
+        <div class="input-group mt-3">
+            <input class="form-control py-2 border-right-0 border" type="search" value="search" id="example-search-input">
+            <span class="input-group-append">
+                <div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
+            </span>
+        </div>
+        {% for project in user_projects %}
+        <div class="card mt-4">
+          <table class="card-table table border-none">
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td>
+                    <div class="media align-items-center pl-3 pr-3 pb-2">
+                        <div>
+                            <h3>{{ project.title }}</h3>
+                        </div>
+                        <div class="media-body d-flex justify-content-end text-muted font-size-1 ml-2">
+                          <button type="button" class="btn btn-light ">Edit</button>
+                          <button type="button" class="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
+                </td> 
+              </tr>
+              <tr>
+                <td>Industries</td>
+                <td>
+                    {% for industry in project.industries.values %}
+                      <a href="#">{{ industry.title }}</a>{% if forloop.counter < project.industries.values.count %}, {% endif %}
+                    {% endfor %}
+                </td>
+              </tr>
+              <tr>
+                <td>Description</td>
+                <td><b>{{ project.description }}</b></td>
+              </tr>
+              <tr>
+                <td>Technologies</td>
+                <td>
+                    {% for technology in project.technologies.values %}
+                        <a href="#">{{ technology.title }}</a>{% if forloop.counter < project.technologies.values.count %}, {% endif %}
+                    {% endfor %}
+                </td>
+              </tr>
+              <tr>
+                <td>Url</td>
+                <td><a href="{{ project.url }}">{{ project.url }}</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+          {% endfor %}
+
+
+{% endblock %}
+
+

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% block extra_meta %}{% endblock %}
+        <title>{% block title %}{% endblock %}</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% block extra_css %}{% endblock %}
+            <style type="text/css">
+        .subscribe-footer {
+            /*position: absolute;*/
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8) !important;
+            height: 10em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 1em;
+            z-index: 9999;
+            font-family: 'Nunito', sans-serif;
+            color: #fff;
+        }
+        .subscribe-input {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            padding: 15px !important;
+            width: 100%;
+            color: #579CE9 !important;
+        }
+        .subscribe-button {
+            background-color: rgba(87, 155, 233, 0.2);
+            font-size: 16px;
+            font-weight: 600;
+            padding: 15px 10% !important;
+            border: none;
+            width: 100%;
+        }
+        .subscribe-text {
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 24px;
+        }
+    </style>
+    </head>
+    <body>
+        {% include "_header.html" %}
+        {% block base_content %}
+        <div class="container mt-4">
+            {% block content %}{% endblock %}
+        </div>
+        {% endblock %}
+
+        {# include "_footer.html" #}
+        
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        {% block extra_js %}{% endblock %}
+    </body>
+</html>
+

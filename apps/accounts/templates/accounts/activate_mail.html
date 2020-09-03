@@ -1,0 +1,15 @@
+{% extends "accounts/base_auth.html" %}
+{% load i18n core_tags static %}
+
+{% block extra_meta %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+
+<!-- <h3 class="mb-4">{% trans "Thank you for your email confirmation. Now you can login your account." %}</h3>
+<div class="mt-4">
+    <a href="{% url 'login' %}" class="btn btn-secondary">{% trans "Login" %}</a>
+</div> -->
+
+{% block content %}
+
+<h3 class="mb-4">{% trans "Thank you for your email confirmation." %}</h3>
+
+{% endblock %}

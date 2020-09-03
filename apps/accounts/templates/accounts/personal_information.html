@@ -1,0 +1,40 @@
+{% extends "accounts/base_profile.html" %}
+{% load i18n static core_tags %}
+
+{% block title %}{% trans "Personal information" %}{% endblock %}
+
+{% block profile_content %}
+<div class="row">
+    <div class="col-md-8">
+        <h3>{% trans "Profile" %}</h3>
+
+        <table class="table table-bordered">
+            <tr>
+                <td>{% trans "Name" %}</td>
+                <td>{{ request.user.name }}</td>
+            </tr>
+            <tr>
+                <td>{% trans "Email" %}</td>
+                <td><a href="mailto:{{ request.user.email }}">{{ request.user.email }}</a>
+                    {% if request.user.email_confirmation %}
+                        <span class="badge badge-success">Verified</span>
+                    {% else %}
+                        <span class="badge badge-danger">Not verified</span>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a href="{% url 'edit_personal_information' %}" class="btn btn-secondary">{% trans "Edit profile" %}</a>
+    {% if request.user.has_usable_password %}
+        <a href="{% url 'password_change' %}" class="btn btn-secondary">{% trans "Change password" %}</a>
+    {% else %}
+        <a href="{% url 'set_password_for_linkedin_user' %}" class="btn btn-secondary">{% trans "Set password" %}</a>
+    {% endif %}
+    <a href="{% url 'edit_email' %}" class="btn btn-secondary">{% trans "Edit email" %}</a>
+</div>
+
+{% endblock %}
